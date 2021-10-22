@@ -13,7 +13,7 @@ class FakePaymentProducer:
 
     def calculate_speed(self, total_messages):
         if total_messages > 0:
-            self.speed = int(total_messages / (time.time() - self.start_speed_calc_ts))
+            self.speed = round(total_messages / (time.time() - self.start_speed_calc_ts), 2)
 
     def generate_topic(self):
         return rng.choice(TOPICS)

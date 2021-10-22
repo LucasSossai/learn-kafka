@@ -16,7 +16,7 @@ class ReportGenerator:
 
     def calculate_speed(self, total_messages):
         if total_messages > 0:
-            self.consumer_speed = int(total_messages / (time.time() - self.start_speed_calc_ts))
+            self.consumer_speed = round(total_messages / (time.time() - self.start_speed_calc_ts), 2)
 
     def print_report(self):
         print(f"Producer speed : {self.producer_speed} | Consumer speed : {self.consumer_speed}")
