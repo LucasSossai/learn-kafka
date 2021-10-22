@@ -1,6 +1,6 @@
 from confluent_kafka import Consumer, KafkaException, KafkaError
 from core.functions.reportgenerator import ReportGenerator
-from core.settings import KAFKA_URL, MIN_COMMIT_COUNT, TOPICS
+from core.settings import CONSUMER_PRINT_INTERVAL, KAFKA_URL, MIN_COMMIT_COUNT, TOPICS
 import sys
 
 
@@ -31,7 +31,7 @@ def consume_loop(consumer, topics):
                     raise KafkaException(msg.error())
             else:
                 msg_count += 1
-                if msg_count % 10000 == 0:
+                if msg_count % CONSUMER_PRINT_INTERVAL == 0:
                     report_generator.process_msg(msg, msg_count)
                 if msg_count % MIN_COMMIT_COUNT == 0:
                     consumer.commit(asynchronous=False)
