@@ -19,4 +19,4 @@ class ReportGenerator:
             self.consumer_speed = int(total_messages / (time.time() - self.start_speed_calc_ts))
 
     def print_report(self):
-        print(f"Producer speed : {self.producer_speed} | Consumer speed : {self.producer_speed}")
+        print(f"Producer speed : {self.producer_speed} | Consumer speed : {self.consumer_speed}")
